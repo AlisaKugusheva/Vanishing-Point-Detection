@@ -22,7 +22,9 @@ def get_shapes(path):
     except ValueError:
         pass
     try:
-        names.remove('.ipynb_checkpints')
+        names.remove('.ipynb_checkpoints')
+    try:
+        names.remove('.DS_Store')
     except ValueError:
         pass
     return {name: cv2.imread(os.path.join(path, name)).shape[0:2] for name in names if not name.endswith('.csv')}
