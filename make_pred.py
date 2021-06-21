@@ -52,9 +52,9 @@ def main():
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', help='Model path',
-                        default='../model.pt')
+                        default='./model.pt')
     parser.add_argument(
-        '--test', help='Path to the test set', default='../test')
+        '--test', help='Path to the test set', default='./test')
     parser.add_argument(
         '--pred', help='name of json file to save', default='./predicted.json')
     parser.add_argument(
