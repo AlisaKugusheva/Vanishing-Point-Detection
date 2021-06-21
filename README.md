@@ -12,7 +12,7 @@
 
 Скачать и распаковать архив **VP-main** https://drive.google.com/file/d/17KruSAywPNDZ2HmaEMTzSIduPWPb5QMx/view?usp=sharing и, находясь в этой директории, запустить:
 1) **python test_gen.py --s ./ --d ./test/ --num 50 --seed 0**
-2) **python make_pred.py --model ./model.pt --test ./test/ --pred ./predictions.json --gt ./markup.json**
-3) **python metrics.py --imgs ./test? --gt ./markup.json --ans ./predictions.json**
+2) **python make_pred.py --model ./model.pt --test ./test/ --pred ./predictions.json --gt ./test/markup.json**
+3) **python metrics.py --imgs ./test/ --gt ./test/markup.json --ans ./predictions.json**
 
 Пример запуска в файле **vp_test.ipynb**.
