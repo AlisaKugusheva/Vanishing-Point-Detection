@@ -23,6 +23,8 @@ def get_shapes(path):
         pass
     try:
         names.remove('.ipynb_checkpoints')
+    except valueError:
+        pass
     try:
         names.remove('.DS_Store')
     except ValueError:
