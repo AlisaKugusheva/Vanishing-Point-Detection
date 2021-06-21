@@ -25,7 +25,7 @@ class VPDataset(Dataset):
         return len(self.df)
     def __getitem__(self, idx):
         img_name = self.df.iloc[idx]['image']
-        image = io.imread(path+img_name).astype('double')
+        image = io.imread(self.root_dir+img_name).astype('double')
         coords = np.array([self.df.iloc[idx, 1:]]).astype('double')
         sample = image, coords
         if self.transform:
