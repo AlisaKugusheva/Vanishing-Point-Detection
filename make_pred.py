@@ -34,10 +34,13 @@ def predict(markup, test_dir, model_path):
     test_loader = DataLoader(test_set, batch_size=1, shuffle=False, num_workers=0)
     model = Mobilenetv2().to('cpu')
     model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
+    model.eval()
     results = {}
     
     with torch.no_grad():
             for (image, label), img_name in tqdm(test_loader):
+#                 image = image.to(device)
+#                 coord = label.to(device)
                 results[img_name[0]] = model(image).tolist()[0]
     return results
 
@@ -49,15 +52,16 @@ def main():
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', help='Model path',
-                        default='./model.pt')
+                        default='../model.pt')
     parser.add_argument(
-        '--test', help='Path to the test set', default='./test/')
+        '--test', help='Path to the test set', default='../test')
     parser.add_argument(
         '--pred', help='name of json file to save', default='./predicted.json')
     parser.add_argument(
         '--gt', help='name of json file with gt', default='.test/markup.json')
 
     args = parser.parse_args()
+
 
     results = predict(args.gt, args.test, args.model)
     save_predictions(args.pred, results)
